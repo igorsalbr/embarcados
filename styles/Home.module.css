@@ -1,3 +1,29 @@
+.graph{
+  display: flex;
+  left:0;
+}
+.table{
+  border: 1px solid;
+}
+
+
+.col, .hea {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.lin:nth-child(even){background-color: #f2f2f2;}
+
+.lin:hover {background-color: #ddd;}
+
+.hea {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
 .container {
   padding: 0 2rem;
 }
