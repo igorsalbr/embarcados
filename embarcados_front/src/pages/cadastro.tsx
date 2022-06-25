@@ -9,18 +9,18 @@ interface IProps {
 
 async function cadas(){
    const object = {
-    idTag:'',
+    id_tag:'',
     name: '',
     permission:'', 
-    github: ''
+    githublink: ''
     
 
    }
 
-   object.idTag= document.querySelectorAll('input')[0].value
+   object.id_tag= document.querySelectorAll('input')[0].value
    object.name= document.querySelectorAll('input')[1].value
    object.permission= document.querySelectorAll('input')[2].value
-   object.github= document.querySelectorAll('input')[3].value
+   object.githublink= document.querySelectorAll('input')[3].value
    console.log(object)
    await axios.post('http://localhost:3333/', object)
    
