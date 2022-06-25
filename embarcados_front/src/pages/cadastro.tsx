@@ -63,7 +63,7 @@ export default function cadastro({first, setFirst}: IProps){
 
             </form>
             <button onClick={()=>cadas} className="border-b-2 rounded bottom-2 justify-center w-{300} h-{300} hover:bg-orange-600" type="submit" form="form1" value="Submit">Enviar</button>
-            <div>{req?.data}</div>
+            <div></div>
         </div>
             
             </>
