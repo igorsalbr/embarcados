@@ -14,18 +14,14 @@ export default function cadastro({first, setFirst}: IProps){
     const [req, setReq]= useState<{ id_tag: number; name: string; permission: string; githublink: string; }>()
     async function cadas(){
         const object = {
-         id_tag:0,
-         name: '',
-         permission:'', 
-         githublink: ''
+         id_tag:parseInt(document.querySelectorAll('input')[0].value),
+         name: document.querySelectorAll('input')[1].value,
+         permission:document.querySelectorAll('input')[2].value, 
+         githublink: document.querySelectorAll('input')[3].value
          
      
         }
      
-        object.id_tag= parseInt(document.querySelectorAll('input')[0].value)
-        object.name= document.querySelectorAll('input')[1].value
-        object.permission= document.querySelectorAll('input')[2].value
-        object.githublink= document.querySelectorAll('input')[3].value
         setReq(object)
      
      }
