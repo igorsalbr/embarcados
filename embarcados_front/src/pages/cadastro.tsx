@@ -27,13 +27,17 @@ export default function cadastro({first, setFirst}: IProps){
      
      }
     useEffect( () => {
+        if (req){
         console.log(req?.id_tag)
         const postData = async () => {
         await axios.post('http://localhost:3333/', req)
      
     }
     postData()// make sure to catch any error
-    .catch(console.error);
+    .catch(console.error);} else {
+        console.log('req n definido')
+    }
+
 },[req])
 
 
