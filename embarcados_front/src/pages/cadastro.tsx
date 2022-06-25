@@ -12,7 +12,8 @@ interface IProps {
 
 export default function cadastro({first, setFirst}: IProps){
     const [req, setReq]= useState<{ id_tag: number; name: string; permission: string; githublink: string; }>()
-    async function cadas(){
+    function cadas(){
+
         const object = {
          id_tag:parseInt(document.querySelectorAll('input')[0].value),
          name: document.querySelectorAll('input')[1].value,
@@ -21,12 +22,12 @@ export default function cadastro({first, setFirst}: IProps){
          
      
         }
-     
+        console.log(object)
         setReq(object)
      
      }
     useEffect( () => {
-        console.log(req)
+        console.log(req?.id_tag)
         const postData = async () => {
         await axios.post('http://localhost:3333/', req)
      
