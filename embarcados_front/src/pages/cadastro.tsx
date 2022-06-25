@@ -7,7 +7,7 @@ interface IProps {
     setFirst: Dispatch<SetStateAction<string>>;
   }
 
-function cadas(){
+async function cadas(){
    const object = {
     idTag:'',
     name: '',
@@ -21,14 +21,11 @@ function cadas(){
    object.name= document.querySelectorAll('input')[1].value
    object.permission= document.querySelectorAll('input')[2].value
    object.github= document.querySelectorAll('input')[3].value
-   console.log(Object)
-   return axios.post('http://localhost:3333/', object)
-  .then(function (response) {
-    console.log(response)
-  })
-  .catch(function (error) {
-    console.error(error)
-  })
+   console.log(object)
+   await axios.post('http://localhost:3333/', object)
+   
+
+  return ''
 }
 
 export default function cadastro({first, setFirst}: IProps){
@@ -59,7 +56,7 @@ export default function cadastro({first, setFirst}: IProps){
 
 
             </form>
-            <button onClick={cadas} className="border-b-2 rounded bottom-2 justify-center w-{300} h-{300} hover:bg-orange-600" type="submit" form="form1" value="Submit">Enviar</button>
+            <button onClick={()=>cadas} className="border-b-2 rounded bottom-2 justify-center w-{300} h-{300} hover:bg-orange-600" type="submit" form="form1" value="Submit">Enviar</button>
 
         </div>
             
