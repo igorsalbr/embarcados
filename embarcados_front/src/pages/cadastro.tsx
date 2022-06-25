@@ -11,10 +11,10 @@ interface IProps {
 
 
 export default function cadastro({first, setFirst}: IProps){
-    const [req, setReq]= useState<{ id_tag: string; name: string; permission: string; githublink: string; }>()
+    const [req, setReq]= useState<{ id_tag: number; name: string; permission: string; githublink: string; }>()
     async function cadas(){
         const object = {
-         id_tag:'',
+         id_tag:0,
          name: '',
          permission:'', 
          githublink: ''
@@ -22,7 +22,7 @@ export default function cadastro({first, setFirst}: IProps){
      
         }
      
-        object.id_tag= document.querySelectorAll('input')[0].value
+        object.id_tag= parseInt(document.querySelectorAll('input')[0].value)
         object.name= document.querySelectorAll('input')[1].value
         object.permission= document.querySelectorAll('input')[2].value
         object.githublink= document.querySelectorAll('input')[3].value
@@ -30,10 +30,14 @@ export default function cadastro({first, setFirst}: IProps){
         setReq(object)
      
      }
-     useEffect(()=>{
-
-        axios.post('localhost:3333/', req)
-     },[req])
+    useEffect( () => {
+        const postData = async () => {
+        await axios.post('http://localhost:3333/', req)
+     
+    }
+    postData()// make sure to catch any error
+    .catch(console.error);
+},[req])
 
 
     return (
@@ -62,7 +66,7 @@ export default function cadastro({first, setFirst}: IProps){
 
 
             </form>
-            <button onClick={()=>cadas} className="border-b-2 rounded bottom-2 justify-center w-{300} h-{300} hover:bg-orange-600" type="submit" form="form1" value="Submit">Enviar</button>
+            <button onClick={()=>cadas()} className="border-b-2 rounded bottom-2 justify-center w-{300} h-{300} hover:bg-orange-600" type="submit" form="form1" value="Submit">Enviar</button>
             <div></div>
         </div>
             
