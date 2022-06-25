@@ -26,11 +26,11 @@ export default function cadastro({first, setFirst}: IProps){
         object.name= document.querySelectorAll('input')[1].value
         object.permission= document.querySelectorAll('input')[2].value
         object.githublink= document.querySelectorAll('input')[3].value
-        console.log(object)
         setReq(object)
      
      }
     useEffect( () => {
+        console.log(req)
         const postData = async () => {
         await axios.post('http://localhost:3333/', req)
      
