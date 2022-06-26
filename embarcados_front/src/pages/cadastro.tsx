@@ -1,3 +1,4 @@
+import React from "react";
 import axios, { AxiosResponse } from "axios";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import NavBar from "../componentes/NavBar";
@@ -8,39 +9,33 @@ interface IProps {
   }
 
 
-
+async function funcaoTeste(a:{"id_tag": number; "name": string; "permission": string; "github_link": string;}) {
+    try {
+        const user = await axios.post('http://localhost:3333/', 
+       a
+        )
+        console.log(user.data)
+    } catch(error) {
+        console.log(error)
+    }
+}
 
 export default function cadastro({first, setFirst}: IProps){
-    const [req, setReq]= useState<{ id_tag: number; name: string; permission: string; githublink: string; }>()
-    function cadas(){
-
-        const object = {
-         id_tag:parseInt(document.querySelectorAll('input')[0].value),
-         name: document.querySelectorAll('input')[1].value,
-         permission:document.querySelectorAll('input')[2].value, 
-         githublink: document.querySelectorAll('input')[3].value
-         
-     
-        }
-        console.log(object)
-        setReq(object)
-     
-     }
-    useEffect( () => {
-        if (req){
-        console.log(req?.id_tag)
-        const postData = async () => {
-        await axios.post('http://localhost:3333/', req)
-     
-    }
-    postData()// make sure to catch any error
-    .catch(console.error);} else {
-        console.log('req n definido')
-    }
-
-},[req])
+    const [req, setReq]= useState<boolean>(false)
+        
+    const [data, setData ] = useState(false)
+    useEffect(()=>{
+        if (data){
+            console.log('tamo aq ne')
+            const a = {"id_tag": parseInt(document.querySelectorAll('input')[0].value), "name": document.querySelectorAll('input')[1].value, "permission": document.querySelectorAll('input')[2].value, "github_link": document.querySelectorAll('input')[3].value}
+            funcaoTeste(a)
 
 
+    }else{console.log('darafalse')}
+    setData(false)    
+    console.log('vishh')
+    },[data])
+    
     return (
         <>
         <NavBar first={first} setFirst={setFirst}/>
@@ -67,7 +62,7 @@ export default function cadastro({first, setFirst}: IProps){
 
 
             </form>
-            <button onClick={()=>cadas()} className="border-b-2 rounded bottom-2 justify-center w-{300} h-{300} hover:bg-orange-600" type="submit" form="form1" value="Submit">Enviar</button>
+            <button onClick={()=>setData(true)} className="border-b-2 rounded bottom-2 justify-center w-{300} h-{300} hover:bg-orange-600" type="submit" form="form1" value="Submit">Enviar</button>
             <div></div>
         </div>
             

@@ -16,7 +16,9 @@ export default function Home({first, setFirst}: IProps){
   return(<>
   
   <NavBar first={first} setFirst={setFirst}/>
-  <h1>{entry}</h1>
+  <div className="border rounded aspect-video max-w-3xl">
+    <h1>{entry}</h1>
+    </div>
   
   </>)
 
