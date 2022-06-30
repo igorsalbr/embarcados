@@ -9,9 +9,9 @@ interface IProps {
   }
 
 
-async function funcaoTeste(a:{"id_tag": number; "name": string; "permission": string; "github_link": string;}) {
+async function funcaoTeste(a:{"\"id_tag\"": string; "\"name\"": string; "\"permission\"": string; "\"github_link\"": string; "\"active\"":boolean}) {
     try {
-        const user = await axios.post('http://localhost:3333/', 
+        const user = await axios.post('https://project-rfid-embarcados.herokuapp.com/', 
        a
         )
         console.log(user.data)
@@ -27,7 +27,7 @@ export default function cadastro({first, setFirst}: IProps){
     useEffect(()=>{
         if (data){
             console.log('tamo aq ne')
-            const a = {"id_tag": parseInt(document.querySelectorAll('input')[0].value), "name": document.querySelectorAll('input')[1].value, "permission": document.querySelectorAll('input')[2].value, "github_link": document.querySelectorAll('input')[3].value}
+            const a = {"\"id_tag\"": document.querySelectorAll('input')[0].value, "\"name\"": document.querySelectorAll('input')[1].value, "\"permission\"": document.querySelectorAll('input')[2].value, "\"github_link\"": document.querySelectorAll('input')[3].value, "\"active\"": false}
             funcaoTeste(a)
 
 
@@ -42,28 +42,30 @@ export default function cadastro({first, setFirst}: IProps){
 
 
         <div className="h-screen">
-
-            <form id='form1' className="w-screen flex justify-center gap-4">
-                <label className="flex-col" htmlFor="idtag">ID da tag
-                <input className="bg-orange-300"  id="idtag"></input>
+           <div className="w-3/4 mx-auto aspect-video">
+            <form id='form1' className=" mt-10 grid grid-cols-4 gap-6 w-full shadow-inner border rounded p-5">
+                <label className="col-start-1 col-end-3" htmlFor="idtag">ID da tag
+                <input className="bg-orange-300 ml-1 justify-end"  id="idtag"></input>
                 </label>
                 
-                <label className="flex-col" htmlFor="name">Nome
-                <input className="bg-orange-300" id="name"></input>
+                <label className="col-start-3 col-end-5" htmlFor="name">Nome
+                <input className="bg-orange-300 ml-1 justify-end" id="name"></input>
                 </label>
 
-                <label className="flex-col" htmlFor="permission">Permissão
-                <input className="bg-orange-300"  id="permission"></input>
+                <label className="col-start-1 col-end-3" htmlFor="permission">Permissão
+                <input className="bg-orange-300 ml-1 justify-end"  id="permission"></input>
                 </label>
 
-                <label className="flex-col" htmlFor="github">Github
-                <input className="bg-orange-300"  id="github"></input>
+                <label className="col-start-3 col-end-5" htmlFor="github">Github
+                <input className="bg-orange-300 ml-1 justify-end"  id="github"></input>
                 </label>
+                <button onClick={()=>setData(true)} className="border-b-2 mt-4 rounded col-start-1 col-span-full flex justify-center w-{300} h-{300} bg-orange-600 opacity-60 hover:opacity-100" type="submit" form="form1" value="Submit">Enviar</button>
 
 
             </form>
-            <button onClick={()=>setData(true)} className="border-b-2 rounded bottom-2 justify-center w-{300} h-{300} hover:bg-orange-600" type="submit" form="form1" value="Submit">Enviar</button>
             <div></div>
+        
+            </div>
         </div>
             
             </>
