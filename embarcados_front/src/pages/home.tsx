@@ -1,13 +1,27 @@
 import axios from "axios";
 import  {Dispatch, SetStateAction, useEffect, useState} from "react";
 import NavBar from "../componentes/NavBar";
+import { useRequest } from "../hooks/use-request2.hook";
 
 interface IProps {
   entry:  {id:string, id_tag:string, name: string, permission: string, github_link:string, active:boolean}|''
   first: string;
     setFirst: Dispatch<SetStateAction<string>>;
+    setEntry: Dispatch<SetStateAction<{id:string, id_tag:string, name: string, permission: string, github_link:string, active:boolean}|''>>;
   }
-export default function Home({entry, first, setFirst}: IProps){
+export default function Home({entry, first, setFirst, setEntry}: IProps){
+   if (first == "home"){
+     setInterval(()=>{
+       axios.get<{activeTags: [{id:string, id_tag:string, name: string, permission: string, github_link:string, active:boolean}]}>(' https:project-rfid-embarcados.herokuapp.com/active').then(function (response) {
+       console.log(response.data.activeTags[0])  
+       setEntry(response.data.activeTags[0]||'')
+    
+       })
+     }
+     ,9000)}
+
+  
+
   
   if (entry && entry.permission && entry.name){
   return(<>
