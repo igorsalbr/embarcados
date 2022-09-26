@@ -1,9 +1,9 @@
-PROJETO PASSAGEM CONTROLADA RFID
+#RFID ACESS CONTROL
 
-SISTEMAS EMBARCADOS
+SISTEMAS EMBARCADOS / EMBEDDED SYSTEM
 PMR  <3
 
-link repo de back:  https://github.com/JoaoCarlosRosaJunior/rfid-users/
-(arquivo .ino na pasta )
+link repo backend:  https://github.com/JoaoCarlosRosaJunior/rfid-users/
+(file .ino in the folder )
 
 
